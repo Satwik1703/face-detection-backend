@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const handleRegister = (req, res) => {
   bcrypt.hash(req.body.password, 10, function(err, hash){
     if(err){
+      console.log(err);
       return res.status(500).json('Error in Hashing the Password')
     }
     UserInfo.create({ email: req.body.email, name: req.body.name, password: hash })
