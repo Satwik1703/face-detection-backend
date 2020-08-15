@@ -15,9 +15,13 @@ const handleRegister = (req, res) => {
       UserInfo.findByIdAndUpdate(data._id, {token: token}, function(err, doc){
         if(err)
           return res.status(500).json('Error in writing Token to Database');
+        // res
+        // .status(200)
+        // .json({token, data})
         res
         .status(200)
-        .json({token, data})
+        .cookie('token', token)
+        .json(data)
       })
     })
     .catch(err => {res.status(500).json('Name/Email already exists')})
