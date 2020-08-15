@@ -11,13 +11,13 @@ const signOut = require('./controllers/signout');
 const app = express();
 // app.use(cors({origin:'https://satwik-face-detection.herokuapp.com', credentials: true}));
 // app.use(cors({origin:'http://localhost:3000', credentials: true}));
-// app.use(cors());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://satwik-face-detection.herokuapp.com");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, DELETE, HEAD, OPTIONS");
-  next();
-});
+app.use(cors());
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET, DELETE, HEAD, OPTIONS");
+//   next();
+// });
 
 app.use(express.json());
 
