@@ -20,7 +20,7 @@ const handleRegister = (req, res) => {
         // .json({token, data})
         res
         .status(200)
-        .cookie('token', token, { httpOnly: true})
+        .cookie('token', token, { httpOnly: true })
         .json(data)
       })
     })
