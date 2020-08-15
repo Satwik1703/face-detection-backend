@@ -17,8 +17,7 @@ const handleRegister = (req, res) => {
           return res.status(500).json('Error in writing Token to Database');
         res
         .status(200)
-        .cookie('token', token, {maxAge: 2*60*60*1000, httpOnly: true})
-        .json(data)
+        .json({token, data})
       })
     })
     .catch(err => {res.status(500).json('Name/Email already exists')})

@@ -21,8 +21,7 @@ const handleSignIn = (req, res) => {
 
           res
           .status(200)
-          .cookie('token', token, {maxAge: 2*60*60*1000, httpOnly: true})
-          .json(doc);
+          .json({token, doc});
         })
       }
     })
@@ -30,12 +29,9 @@ const handleSignIn = (req, res) => {
 }
 
 const handleSignInToken = (req, res) => {
-  if(!req.headers.cookie)
-    return res.status(404).json('Cookie Not Found');
-
-  var token = req.headers.cookie.split('=')[1]
-  if(!token)
+  if(!req.body.token)
     return res.status(404).json('Token Not Found');
+  var token = req.body.token;
 
   jwt.verify(token, 'Satwik', function(err, decoded){
     if(err)
