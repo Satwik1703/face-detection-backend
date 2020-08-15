@@ -15,7 +15,7 @@ const app = express();
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://satwik-face-detection.herokuapp.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods": "GET, DELETE, HEAD, OPTIONS")
+  res.header("Access-Control-Allow-Methods", "GET, DELETE, HEAD, OPTIONS");
   next();
 });
 
@@ -23,7 +23,7 @@ app.use(express.json());
 
 db();
 
-app.get('/', (req, res, next) => { res.status(200).json('Server is working') });
+app.get('/', (req, res, next) => { res.status(200).send('Server is working') });
 
 app.post('/register', (req, res, next) => { register.handleRegister(req, res) });
 app.post('/signin', (req, res, next) => { signIn.handleSignIn(req, res) });
